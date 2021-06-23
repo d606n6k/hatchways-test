@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import apiCall from "../utils/api";
 import Student from "./Student"
+import FilterName from "./FilterName";
+import FilterTag from "./FilterTag";
 
 class SectionOne extends Component {
 
@@ -22,19 +24,21 @@ class SectionOne extends Component {
         .catch((err) => console.log(err));
       };
 
+      handleInputChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        this.setState({
+          [name]: value,
+        });
+      };
+
       render() {
         console.log(this.state)
-        // // const studentSort = [...this.state.apiStudents.students]
-        // const apiIteration = [this.state.apiStudents].map(item => {
-        //   return (
-        //     <div>{item}</div>
-        //   )
-        // });
-        // console.log(apiIteration);
-        // const apiStudents = this.state;
        return <div>
-         <h1>Hatchways Coding Test - by William Lucht</h1>
-         {/* <div>{children}</div> */}
+         <h1 id="title-head">Hatchways Coding Test - by William Lucht</h1>
+         <hr />
+         <FilterName handleInputChange={this.handleInputChange} />
+         <FilterTag handleInputChange={this.handleInputChange} />
          {this.state.apiStudents.map((student, index) => {
            return (<Student student={student} />)
          })}
