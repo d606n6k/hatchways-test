@@ -1,53 +1,48 @@
 import React, { Component } from "react";
 import apiCall from "../utils/api";
+import Student from "./Student"
 
 class SectionOne extends Component {
 
     state = {
-        apiStudents: {
-            // students: [],
-        },
-        image: ""
+        apiStudents: [],
+        filter: []
+        // image: ""
         // students: [],
     };
 
     async componentDidMount() {
         this.getStudents();
-        console.log(this.state.apiStudents)
     }
-    
+
+    // this is working as intended
     getStudents = () => {
         apiCall.fetchApi()
-        // .then((res) => console.log(res.data))
-        .then((res) => {
-          const data = res.data;
-          // console.log(data) 
-          this.setState({apiStudents: data.students })
-        })
-        // .then((res) => this.setState(...this.state,{image: res.data.students[0].pic}))
-        //   .then(console.log(this.state))
+        .then((res) => this.setState({apiStudents: res.data.students }))
         .catch((err) => console.log(err));
-    
       };
-    
+
       render() {
-          const stuImage = this.state.apiStudents;
-          console.log(stuImage)
-        // console.log(this.state.apiStudents);
-        // console.log(this.state.image);
-          return(
-            <div>
-                {/* <h1>{[0].city}</h1> */}
-                {/* <img src={stuImage[0].pic} alt="students pic" /> */}
-                {/* {stuImage.map((students, index)=>{
-                  return <h1>{[0].city}</h1>
-                })} */}
-            </div>
-            // <div>
-            //     {this.students[0] ? <img src={this.apiStudents.students[0].pic} alt="students pic" /> : <div>"Loading"</div>}
-            // </div>
-          )
-      }      
+        console.log(this.state)
+        // // const studentSort = [...this.state.apiStudents.students]
+        // const apiIteration = [this.state.apiStudents].map(item => {
+        //   return (
+        //     <div>{item}</div>
+        //   )
+        // });
+        // console.log(apiIteration);
+        // const apiStudents = this.state;
+       return <div>
+         <h1>Hatchways Coding Test - by William Lucht</h1>
+         {/* <div>{children}</div> */}
+         {this.state.apiStudents.map((student, index) => {
+           return (<Student student={student} />)
+         })}
+       </div>;
+      
+      
+      }
+          
     }
     
 export default SectionOne;
