@@ -8,9 +8,7 @@ class SectionOne extends Component {
 
     state = {
         apiStudents: [],
-        filter: []
-        // image: ""
-        // students: [],
+
     };
 
     async componentDidMount() {
@@ -33,7 +31,7 @@ class SectionOne extends Component {
       };
 
       render() {
-        console.log(this.state)
+        // console.log(this.state)
        return <div>
          <h1 id="title-head">Hatchways Coding Test - by William Lucht</h1>
          <hr />
