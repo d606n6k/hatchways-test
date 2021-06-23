@@ -20,14 +20,16 @@ text-align: center;
   margin-bottom: 20px;
 }
 
-.student-flex-box{
-  /* display: flex; */
-}
-
 .student-image{
   border: 1px solid black;
   border-radius: 110px;
   width: 100px;
+}
+.grades-controller{
+  padding-left: 14px;
+}
+.grades-controller li{
+  list-style: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {

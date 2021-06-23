@@ -10,7 +10,7 @@ function FilterName(props) {
           onChange={props.handleInputChange}
           value={props.search}
           type="text"
-          name="search"
+          name="filterName"
           className="form-control"
           placeholder="Filter by Name"
           aria-label="Emlpoyee Name"

@@ -10,11 +10,11 @@ let apiArray = student.grades;
 let apiArrayedNums = apiArray.map(i=>Number(i));
 // console.log(apiArrayedNums);
 
-var total = 0;
-for(var i = 0; i < apiArrayedNums.length; i++) {
+let total = 0;
+for(let i = 0; i < apiArrayedNums.length; i++) {
     total += apiArrayedNums[i];
 }
-var avg = total / apiArrayedNums.length;
+let avg = total / apiArrayedNums.length;
 // console.log(avg);
 
 
@@ -28,7 +28,7 @@ var avg = total / apiArrayedNums.length;
                 <p>Email: {student.email}</p>
                 <p>Company: {student.company}</p>
                 <p>Skill: {student.skill}</p>
-                <p>Average: <strong>{avg}</strong></p>
+                <p>Average Grade: <strong>{avg}</strong></p>
                 <ul className="grades-controller">
                     <li>Test 1:    {apiArrayedNums[0]}</li>
                     <li>Test 2:    {apiArrayedNums[1]}</li>
@@ -39,10 +39,6 @@ var avg = total / apiArrayedNums.length;
                     <li>Test 7:    {apiArrayedNums[6]}</li>
                     <li>Test 8:    {apiArrayedNums[7]}</li>
                 </ul>
-            </div>
-            
-            <div className="col-12">
-                
             </div>
         </div>
         <hr />
