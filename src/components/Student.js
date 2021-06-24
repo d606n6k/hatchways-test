@@ -1,10 +1,12 @@
 import React, {useState} from "react";
 
-function Student({student, handleAddTag}){
+function Student({student, handleAddTag, handleCollapse}){
 // console.log(student);
 
 const [tagState, setTagState] = useState("");
 
+
+const collapsed = student.collapsed;
 async function handleTagChange(e){
     await setTagState(e.target.value)
 }
@@ -42,7 +44,8 @@ let avg = total / apiArrayedNums.length;
                 <p>Company: {student.company}</p>
                 <p>Skill: {student.skill}</p>
                 <p>Average Grade: <strong>{avg}</strong></p>
-                <ul className="grades-controller">
+                <button id={student.id} onClick={handleCollapse}>{collapsed ? "Show All Grades" : "Hide All Grades"}</button>
+                {!collapsed && <ul className="grades-controller">
                     <li>Test 1:    {apiArrayedNums[0]}</li>
                     <li>Test 2:    {apiArrayedNums[1]}</li>
                     <li>Test 3:    {apiArrayedNums[2]}</li>
@@ -51,7 +54,8 @@ let avg = total / apiArrayedNums.length;
                     <li>Test 6:    {apiArrayedNums[5]}</li>
                     <li>Test 7:    {apiArrayedNums[6]}</li>
                     <li>Test 8:    {apiArrayedNums[7]}</li>
-                </ul>
+                </ul>}
+               
                 <div className="flex-div">
                 {student.tags.map((tag, index) =>{
                     return <p key={index} className="tag-control">{tag}</p>

@@ -23,7 +23,7 @@ class SectionOne extends Component {
         apiCall.fetchApi()
         .then((res) => {
           const students = res.data.students.map(student => {
-            return {...student, tags: []}
+            return {...student, tags: [], collapsed: true}
           })
           this.setState({apiStudents: students})
         this.handleFilter();
@@ -40,6 +40,19 @@ class SectionOne extends Component {
         // console.log(value);
         this.handleFilter();
       };
+
+      handleCollapse = (event) => {
+        event.preventDefault();
+        const studentGrades = this.state.apiStudents.map(student => {
+          if(student.id === event.target.id){
+            student.collapsed = !student.collapsed
+          }
+          return student;
+        })
+        this.setState({
+          apiStudents: studentGrades
+        })
+      }
 
       handleAddTag = (id, value) => {
         // event.preventDefault();
@@ -91,7 +104,7 @@ class SectionOne extends Component {
          <FilterName handleInputChange={this.handleInputChange} />
          <FilterTag handleInputChange={this.handleInputChange} />
          {this.state.filteredName.map((student, index) => {
-           return (<Student student={student} handleAddTag={this.handleAddTag} />)
+           return (<Student student={student} handleAddTag={this.handleAddTag} handleCollapse={this.handleCollapse}/>)
          })}
        </div>;
       
