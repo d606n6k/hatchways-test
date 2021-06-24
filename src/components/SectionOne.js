@@ -111,14 +111,17 @@ class SectionOne extends Component {
     // this is our React render function to output everything to the page
     render() {
       console.log(this.state)
+      const theFilteredStuff = this.state.filteredTag.length === 0;
       return <div>
         <h1 id="title-head">Hatchways Coding Test - by William Lucht</h1>
         <hr />
         <FilterName handleInputChange={this.handleInputChange} />
         <FilterTag handleInputChange={this.handleInputChange} />
-        {this.state.filteredTag.map((student, index) => {
+        {!theFilteredStuff && this.state.filteredTag.map((student, index) => {
           return (<Student student={student} handleAddTag={this.handleAddTag} handleCollapse={this.handleCollapse}/>)
         })}
+        {theFilteredStuff && <p className="text-center">There are no results found!</p>
+        }
       </div>;
     } 
   }
