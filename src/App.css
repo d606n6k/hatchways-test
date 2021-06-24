@@ -16,8 +16,29 @@ body{
 text-align: center;
 }
 
+.name-filter{
+  border: 0;
+  border-bottom: solid 1px #d6d6d6;
+  border-radius: 0;
+}
+
+.tag-filter{
+  border: 0;
+  border-bottom: solid 1px #d6d6d6;
+  border-radius: 0;
+}
+
+
 .row-controller{
   margin-bottom: 20px;
+}
+
+.row-controller p{
+  margin-bottom: 2px;
+}
+
+.row-controller p:nth-child(5){
+  margin-bottom: 0;
 }
 
 .student-image{
@@ -31,6 +52,19 @@ text-align: center;
 .grades-controller li{
   list-style: none;
 }
+.grades-button{
+  font-size: 24px;
+  font-weight: bold;
+  width: 40px;
+  height: 40px;
+  border: none;
+  float: right;
+  margin-top: -45px;
+}
+
+.grades-button:focus{
+  outline: none;
+}
 
 .flex-div{
   display: flex;
@@ -38,11 +72,26 @@ text-align: center;
 }
 
 .tag-control{
-  background-color: #282c34;
-  color: white;
+  background-color: #d6d6d6;;
+  color: black;
   margin: 5px;
 padding: 5px ;
 border-radius: 4px;
+}
+
+.tag-input-control input{
+  border: none;
+  border-bottom: solid 1px;
+  margin-top: 6px;
+
+}
+
+.tag-input-control input:focus{
+  outline: none;
+}
+
+.tag-input-control button {
+  display: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {

@@ -35,16 +35,21 @@ let avg = total / apiArrayedNums.length;
 
     return (<div id={student.id} className="container">
         <div className="row row-controller">
-            <div className="col-2">
+            <div className="col-12 col-sm-2">
                 <img className="student-image" src={student.pic} alt={student.firstName}/>
             </div>
-            <div className="col-10">
+            <div className="col-12 col-sm-10">
                 <h2>{student.firstName} {student.lastName}</h2>
+                    <button id={student.id} className="grades-button" onClick={handleCollapse}>{collapsed ? "+" : "-"}</button>
                 <p>Email: {student.email}</p>
                 <p>Company: {student.company}</p>
                 <p>Skill: {student.skill}</p>
                 <p>Average Grade: <strong>{avg}</strong></p>
-                <button id={student.id} onClick={handleCollapse}>{collapsed ? "Show All Grades" : "Hide All Grades"}</button>
+                <div className="flex-div">
+                {student.tags.map((tag, index) =>{
+                    return <p key={index} className="tag-control">{tag}</p>
+                })}
+                </div>
                 {!collapsed && <ul className="grades-controller">
                     <li>Test 1:    {apiArrayedNums[0]}</li>
                     <li>Test 2:    {apiArrayedNums[1]}</li>
@@ -56,14 +61,9 @@ let avg = total / apiArrayedNums.length;
                     <li>Test 8:    {apiArrayedNums[7]}</li>
                 </ul>}
                
-                <div className="flex-div">
-                {student.tags.map((tag, index) =>{
-                    return <p key={index} className="tag-control">{tag}</p>
-                })}
-                </div>
                 
-                <form>
-                    <input type="text" value={tagState} onChange={handleTagChange}/>
+                <form className="tag-input-control">
+                    <input type="text" value={tagState} onChange={handleTagChange} placeholder="Add a tag"/>
                     <button onClick={handleButtonClick} value={tagState} type="submit" id={student.id}>Submit Tag</button>
                 </form>
             </div>

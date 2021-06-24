@@ -11,8 +11,8 @@ function FilterName(props) {
           value={props.search}
           type="text"
           name="filterName"
-          className="form-control"
-          placeholder="Filter by Name"
+          className="form-control name-filter"
+          placeholder="Search by Name"
           aria-label="Emlpoyee Name"
           aria-describedby="basic-addon1"
         />
