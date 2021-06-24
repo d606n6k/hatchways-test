@@ -1,8 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
 
-function Student({student}){
+function Student({student, handleAddTag}){
 // console.log(student);
-// TODO: create a function that takes the average of student.grades
+
+const [tagState, setTagState] = useState("");
+
+async function handleTagChange(e){
+    await setTagState(e.target.value)
+}
+
+function handleButtonClick(event){
+    event.preventDefault();
+    const id = event.target.id;
+    const value = event.target.value;
+    handleAddTag(id, value);
+    setTagState('');
+}
 
 // console.log(student.grades);
 let apiArray = student.grades;
@@ -39,6 +52,16 @@ let avg = total / apiArrayedNums.length;
                     <li>Test 7:    {apiArrayedNums[6]}</li>
                     <li>Test 8:    {apiArrayedNums[7]}</li>
                 </ul>
+                <div className="flex-div">
+                {student.tags.map((tag, index) =>{
+                    return <p key={index} className="tag-control">{tag}</p>
+                })}
+                </div>
+                
+                <form>
+                    <input type="text" value={tagState} onChange={handleTagChange}/>
+                    <button onClick={handleButtonClick} value={tagState} type="submit" id={student.id}>Submit Tag</button>
+                </form>
             </div>
         </div>
         <hr />

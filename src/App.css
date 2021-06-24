@@ -32,6 +32,19 @@ text-align: center;
   list-style: none;
 }
 
+.flex-div{
+  display: flex;
+  flex-direction: row;
+}
+
+.tag-control{
+  background-color: #282c34;
+  color: white;
+  margin: 5px;
+padding: 5px ;
+border-radius: 4px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

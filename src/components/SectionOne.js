@@ -21,7 +21,11 @@ class SectionOne extends Component {
     // this is working as intended
     getStudents = () => {
         apiCall.fetchApi()
-        .then((res) => {this.setState({apiStudents: res.data.students})
+        .then((res) => {
+          const students = res.data.students.map(student => {
+            return {...student, tags: []}
+          })
+          this.setState({apiStudents: students})
         this.handleFilter();
       })
         .catch((err) => console.log(err));
@@ -36,16 +40,35 @@ class SectionOne extends Component {
         // console.log(value);
         this.handleFilter();
       };
+
+      handleAddTag = (id, value) => {
+        // event.preventDefault();
+        // alert(event.target.id);
+        
+        // console.log(event.target.value);
+        if(value){
+          const tagApply = this.state.apiStudents.map(student =>{
+            if(student.id === id){
+              student.tags.push(value);
+            }
+            return student;
+          })
+          this.setState({
+            apiStudents: tagApply
+          })
+        }
+       
+      }
     
       handleFilter = () => {
-        const filterName = this.state.filterName;
+        const filterName = this.state.filterName.toLowerCase();
         const filterTag = this.state.filterTag;
         let filteredName;
         if(filterName){
           filteredName = this.state.apiStudents.filter(student => {
           const name = `${student.firstName} ${student.lastName}`;
           // we will need to add filterTag functionality here when it is implemented for each student 
-          if(name.includes(filterName)){
+          if(name.toLowerCase().includes(filterName)){
             return student;
           }
         })
@@ -60,16 +83,15 @@ class SectionOne extends Component {
         // console.log(this.state.filteredName);
       }
 
-
       render() {
-        // console.log(this.state)
+        console.log(this.state)
        return <div>
          <h1 id="title-head">Hatchways Coding Test - by William Lucht</h1>
          <hr />
          <FilterName handleInputChange={this.handleInputChange} />
          <FilterTag handleInputChange={this.handleInputChange} />
          {this.state.filteredName.map((student, index) => {
-           return (<Student student={student} />)
+           return (<Student student={student} handleAddTag={this.handleAddTag} />)
          })}
        </div>;
       
