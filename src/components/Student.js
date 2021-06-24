@@ -46,9 +46,6 @@ let avg = total / apiArrayedNums.length;
                 <p>Skill: {student.skill}</p>
                 <p>Average Grade: <strong>{avg}</strong></p>
                 <div className="flex-div">
-                {student.tags.map((tag, index) =>{
-                    return <p key={index} className="tag-control">{tag}</p>
-                })}
                 </div>
                 {!collapsed && <ul className="grades-controller">
                     <li>Test 1:    {apiArrayedNums[0]}</li>
@@ -60,6 +57,9 @@ let avg = total / apiArrayedNums.length;
                     <li>Test 7:    {apiArrayedNums[6]}</li>
                     <li>Test 8:    {apiArrayedNums[7]}</li>
                 </ul>}
+                {student.tags.map((tag, index) =>{
+                    return <p key={index} className="tag-control">{tag}</p>
+                })}
                
                 
                 <form className="tag-input-control">
